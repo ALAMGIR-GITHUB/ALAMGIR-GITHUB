@@ -1,0 +1,23 @@
+function [decimalMatrix]= Integer_to_Fraction(integerMatrix)
+%Decimal_to_Binary_for_Decryption
+
+    n = 16;         % number bits for integer part of your number
+    m = 20;         % number bits for fraction part of your number
+
+    decimalMatrix=[];
+
+
+    for i=1:size(integerMatrix,1)
+        for j=1:size(integerMatrix,2)
+            binary2decimal=integerMatrix(i,j);
+            decimal2binary=decimalToBinaryVector(binary2decimal,m+n); % MAKE binary vector from converted integer      
+            % %  % the inverse transformation
+            b2d = decimal2binary*pow2(n-1:-1:-m).';        
+            decimalMatrix(i,j)=b2d;
+    %         isequal(decimal2binary,d2b)
+
+        end
+    end
+    decimalMatrix;
+
+end

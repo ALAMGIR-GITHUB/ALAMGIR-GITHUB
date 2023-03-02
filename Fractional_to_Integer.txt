@@ -1,0 +1,21 @@
+function [integerMatrix]= Fractional_to_Integer(feature)
+    % clc;
+    % feature=rand(10,10) % your float point number
+    n = 16;         % number bits for integer part of your number
+    m = 20;         % number bits for fraction part of your number
+
+    integerMatrix=[];
+
+    for i=1:size(feature,1)
+        for j=1:size(feature,2)
+
+            % binary number
+            d2b = [ fix(rem(fix(feature(i,j))*pow2(-(n-1):0),2)), fix(rem( rem(feature(i,j),1)*pow2(1:m),2))];  %
+            binary2decimal=binaryVectorToDecimal(d2b);
+            integerMatrix(i,j)=binary2decimal;   % MAKE INTEGER matrix, it will undergoes for encryption
+
+        end
+    end
+
+    integerMatrix;
+end
